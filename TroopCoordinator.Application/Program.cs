@@ -18,7 +18,7 @@ namespace TroopCoordinator.Application
             PrintOperations printer = new();
             // Instantiation - Decorators
             LogPrintsDecorator printerWithLog = new LogPrintsDecorator(printer);
-            CoordinateCachingDecorator coordinatesWithCache = new CoordinateCachingDecorator(coordinates, memoryCache);
+            CachingCoordinateDecorator coordinatesWithCache = new CachingCoordinateDecorator(coordinates, memoryCache);
 
             // CSV to List
             people = FileOperations.ReadToList("MOCK_DATA.csv");

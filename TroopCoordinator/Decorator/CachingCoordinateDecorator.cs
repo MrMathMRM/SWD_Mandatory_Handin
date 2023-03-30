@@ -7,11 +7,11 @@ namespace TroopCoordinator.Decorator
     /// <summary>
     /// Concrete Decorator
     /// </summary>
-    public class CoordinateCachingDecorator : ICoordinates
+    public class CachingCoordinateDecorator : ICoordinates
     {
         private readonly ICoordinates _coordinates;
         private readonly IMemoryCache _cache;
-        public CoordinateCachingDecorator(ICoordinates coordinates, IMemoryCache memoryCache)
+        public CachingCoordinateDecorator(ICoordinates coordinates, IMemoryCache memoryCache)
         {
             _coordinates = coordinates;
             _cache = memoryCache;
