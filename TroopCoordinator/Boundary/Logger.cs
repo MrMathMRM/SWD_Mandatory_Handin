@@ -33,20 +33,6 @@ namespace TroopCoordinator.Boundary
             Directory.CreateDirectory(path);
         }
 
-        public bool CheckForExistingFile(string path, string fileName)
-        {
-            bool existingFileFound = File.Exists(@$"{path}\{fileName}");
-
-            if (!existingFileFound)
-            {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("File not found!");
-                Console.ResetColor();
-            }
-
-            return existingFileFound;
-        }
-
         public string PrepareLogForPersistence(DateTimeOffset date, string text)
         {
             StringBuilder sb = new StringBuilder();
