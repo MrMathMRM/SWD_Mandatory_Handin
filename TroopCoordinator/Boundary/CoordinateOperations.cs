@@ -5,11 +5,11 @@ namespace TroopCoordinator.Boundary
 {
     public class CoordinateOperations : ICoordinates
     {
-        private readonly TroopCoordinates _coordinate;
+        private readonly TroopCoordinatesSimulator _coordinate;
 
         public CoordinateOperations()
         {
-            _coordinate = new TroopCoordinates();
+            _coordinate = new TroopCoordinatesSimulator();
         }
 
         public string GetCoordinatesById(string id)

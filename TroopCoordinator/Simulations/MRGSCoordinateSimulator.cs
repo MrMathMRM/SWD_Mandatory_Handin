@@ -1,6 +1,6 @@
 ﻿namespace TroopCoordinator.Simulations
 {
-    public class TroopCoordinates
+    public class TroopCoordinatesSimulator
     {
         private readonly Random _rnd = new Random();
 
