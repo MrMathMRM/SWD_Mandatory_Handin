@@ -1,6 +1,8 @@
 ﻿using System.Runtime.CompilerServices;
+using Microsoft.Extensions.Caching.Memory;
 using TroopCoordinator.Boundary;
 using TroopCoordinator.Decorator;
+using TroopCoordinator.Interface;
 using TroopCoordinator.Simulations;
 
 namespace TroopCoordinator.Application
@@ -10,10 +12,13 @@ namespace TroopCoordinator.Application
         static void Main(string[] args)
         {
             // Instantiation
+            MemoryCache memoryCache = new MemoryCache(new MemoryCacheOptions());
             List<People> people = new();
             CoordinateOperations coordinates = new();
             PrintOperations printer = new();
+            // Instantiation - Decorators
             LogPrintsDecorator printerWithLog = new LogPrintsDecorator(printer);
+            CoordinateCachingDecorator coordinatesWithCache = new CoordinateCachingDecorator(coordinates, memoryCache);
 
             // CSV to List
             people = FileOperations.ReadToList("MOCK_DATA.csv");
@@ -23,7 +28,7 @@ namespace TroopCoordinator.Application
                 Console.Clear();
                 foreach (var person in people)
                 {
-                    printerWithLog.Print($"Name: {person.FirstName} {person.LastName}, Coordinates: {coordinates.GetCoordinatesById(person.Id)}");
+                    printerWithLog.Print($"Name: {person.FirstName} {person.LastName}, Coordinates: {coordinatesWithCache.GetCoordinatesById(person.Id)}");
                 }
                 Thread.Sleep(5000);
             }
