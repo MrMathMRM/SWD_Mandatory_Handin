@@ -9,28 +9,28 @@ namespace TroopCoordinator.Boundary
 {
     public class Logger : ILogger
     {
-        private static string directory = @".\logs\";
-        private static string fileName = "log.txt";
+        private const string Directory = @".\logs\";
+        private const string FileName = "log.txt";
 
         public void Log(string text)
         {
-            if (!CheckForExistingDirectory(directory))
+            if (!CheckForExistingDirectory(Directory))
             {
-                CreateDirectory(directory);
+                CreateDirectory(Directory);
             }
 
-            SaveLogToFile(directory, fileName, PrepareLogForPersistence(DateTime.Now, text));
+            SaveLogToFile(Directory, FileName, PrepareLogForPersistence(DateTime.Now, text));
         }
 
         public bool CheckForExistingDirectory(string path)
         {
-            bool existingDirectoryFound = Directory.Exists(path);
+            bool existingDirectoryFound = System.IO.Directory.Exists(path);
             return existingDirectoryFound;
         }
 
         public void CreateDirectory(string path)
         {
-            Directory.CreateDirectory(path);
+            System.IO.Directory.CreateDirectory(path);
         }
 
         public string PrepareLogForPersistence(DateTimeOffset date, string text)
