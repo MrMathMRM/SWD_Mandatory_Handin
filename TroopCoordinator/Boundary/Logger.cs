@@ -7,6 +7,15 @@ using TroopCoordinator.Interface;
 
 namespace TroopCoordinator.Boundary
 {
+    /***************************************************************************************
+    *
+    *    Modified from:
+    *    Title: Logger
+    *    Author: Mathias Martin Rahbek Markussen
+    *    Date: <date>
+    *    Availability: https://gitlab.au.dk/au694672/obligatorisk-handin-2
+    *
+    ***************************************************************************************/
     public class Logger : ILogger
     {
         private const string Directory = @".\logs\";
